@@ -1,13 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import CommentDetail from "./CommentDetail";
-import faker from "faker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import CommentDetail from './CommentDetail';
+import faker from 'faker';
 import ApprovalCard from './ApprovalCard';
 const App = () => {
   return (
     <div className='ui container comments'>
-      {/**this is how we call another jsx file */}
-      <ApprovalCard/>
+      {/**passing a commend detail child to be placed in an approval card */}
+      <ApprovalCard>
+        <CommentDetail
+          author='jake'
+          time='10:40'
+          comment='WOAH!'
+          avatar={faker.image.avatar()}
+        />
+      </ApprovalCard>
+
       <CommentDetail
         author='jake'
         time='10:40'
@@ -30,4 +38,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(<App />, document.querySelector('#root'));
