@@ -6,17 +6,20 @@ class APP extends React.Component {
     super(props);
 
     this.state = { lat: null, errorMsg: '' };
+
+    //to update the state we MUST call the set state method
+    //place is just the name we gave an object
+    //place is a call back function, which means it will update when it finishes
+    //getting what it does
+  }
+
+  //will execute one time put data loading stuff here
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      //to update the state we MUST call the set state method
-      //place is just the name we gave an object
-      //place is a call back function, which means it will update when it finishes
-      //getting what it does
       (place) => {
         this.setState({ lat: place.coords.latitude });
       },
-      (err) => {
-        this.setState({ errorMsg: err.message });
-      }
+      (err) => this.setState({ errorMsg: err.message })
     );
   }
 
