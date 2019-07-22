@@ -14,7 +14,7 @@ const CommentDetail = props => {
           <span className='date'>{props.time}</span>
           <div className='text'>
             {props.comment}
-            {/*<img alt='avatar' src={faker.image.avatar()} />*/}
+            
           </div>
         </div>
       </div>
