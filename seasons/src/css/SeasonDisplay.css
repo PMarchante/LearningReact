@@ -10,3 +10,26 @@
     right: 10px;
 
 }
+.border-red{
+    border:20px blueviolet;
+}
+.season-display.Winter i{
+    color: blue;
+}
+.season-display.Summer i{
+    color: red;
+}
+.season-display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Winter{
+    background-color: aliceblue;
+}
+
+.Summer{
+    background-color: orange
+}
