@@ -1,15 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import SeasonDisplay from "./SeasonDisplay";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 class APP extends React.Component {
   //state initialization
-  state = { lat: null, errorMsg: "" };
+  state = { lat: null, errorMsg: '' };
 
   //will execute one time put data loading stuff here
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      place => this.setState({ lat: place.coords.latitude }),
-      err => this.setState({ errorMsg: err.message })
+      (place) => this.setState({ lat: place.coords.latitude }),
+      (err) => this.setState({ errorMsg: err.message })
     );
   }
 
@@ -27,4 +27,4 @@ class APP extends React.Component {
   }
 }
 
-ReactDOM.render(<APP />, document.querySelector("#root"));
+ReactDOM.render(<APP />, document.querySelector('#root'));
