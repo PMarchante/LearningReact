@@ -1,12 +1,31 @@
-import React from "react";
-import SearchBar from "./SearchBar";
+import React from 'react';
+import unsplash from '../api/unsplash';
+import SearchBar from './SearchBar';
+import ImageList from './ImageList';
 
-const App = () => {
-  return (
-    <div className='ui container' style={{ marginTop: "10px" }}>
-      <SearchBar />
-    </div>
-  );
-};
+class App extends React.Component {
+  //initialize the state with an empty array
+  state = { images: [] };
+
+  //use the async keyword to let us use the await axios
+  onSearchSubmit = async (term) => {
+    //the website will specify where we cant to make a network request
+    //this will make a request to the unsplash API documentation on their website
+    const response = await unsplash.get('/search/photos', {
+      params: { query: term }
+    });
+
+    this.setState({ images: response.data.results });
+  };
+
+  render() {
+    return (
+      <div className='ui container' style={{ marginTop: '10px' }}>
+        <SearchBar onSubmit={this.onSearchSubmit} />
+        <ImageList images={this.state.images} />
+      </div>
+    );
+  }
+}
 
 export default App;
