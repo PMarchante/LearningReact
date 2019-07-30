@@ -12,11 +12,12 @@ const seasonConfig = {
   }
 };
 
-const getSeason = (lat, month) => {
+//this is like a normal method. we can name the parameters we pass anything we want
+const getSeason = (latitude, month) => {
   if (month > 2 && month < 9) {
-    return lat > 0 ? "Summer" : "Winter";
+    return latitude > 0 ? "Summer" : "Winter";
   } else {
-    return lat > 0 ? "Winter" : "Summer";
+    return latitude > 0 ? "Winter" : "Summer";
   }
 };
 
