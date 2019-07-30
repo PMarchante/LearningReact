@@ -1,23 +1,24 @@
-import React from "react";
+import React from 'react';
 
 class Searchbar extends React.Component {
-  state = { searchInput: "" };
+  state = { searchInput: '' };
 
-  inputChange = event => {
+  inputChange = (event) => {
     this.setState({ searchInput: event.target.value });
   };
 
-  submitForm = event => {
+  submitForm = (event) => {
     event.preventDefault();
     this.props.submitFormFromApp(this.state.searchInput);
   };
   render() {
     return (
-      <div className='ui segment'>
+      <div className='ui segment' style={{ backgroundColor: 'red' }}>
         <h1>Youtube clone</h1>
         <form className='ui form' onSubmit={this.submitForm}>
           <label>Video search</label>
           <input
+            placeholder='Search videos'
             type='text'
             value={this.state.searchInput}
             onChange={this.inputChange}
