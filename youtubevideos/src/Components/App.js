@@ -6,9 +6,16 @@ import VideoDetail from './VideoDetail';
 class App extends React.Component {
   state = { listVideos: [], selectedVideo: null };
 
+  //default search term that will show a video app starts up
+  componentDidMount() {
+    this.onSearchSubmit('mouse');
+  }
   onSearchSubmit = async (input) => {
     const response = await youtube.get('/search', { params: { q: input } });
-    this.setState({ listVideos: response.data.items });
+    this.setState({
+      listVideos: response.data.items,
+      selectedVideo: response.data.items[0]
+    });
   };
 
   onVideoSelect = (vids) => {
@@ -23,11 +30,19 @@ class App extends React.Component {
           style={{ marginTop: 20, backgroundColor: 'red' }}>
           <Searchbar submitFormFromApp={this.onSearchSubmit} />
         </div>
-        <VideoDetail video={this.state.selectedVideo} />
-        <VideoList
-          onVideoSelect={this.onVideoSelect}
-          vids={this.state.listVideos}
-        />
+        <div className='ui grid'>
+          <div className='ui row'>
+            <div className='eleven wide column'>
+              <VideoDetail video={this.state.selectedVideo} />
+            </div>
+            <div className='five wide column'>
+              <VideoList
+                onVideoSelect={this.onVideoSelect}
+                vids={this.state.listVideos}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
